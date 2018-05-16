@@ -73,18 +73,21 @@ suite =
                         "hoge"
 
                     html =
-                        Html.table [] <|
-                            List.map
-                                (\dl ->
-                                    Html.tr [] <|
-                                        List.map
-                                            (\ds ->
-                                                Html.td [ Html.Events.onClick <| msger "dmy" ]
-                                                    [ Html.text ds ]
-                                            )
-                                            dl
-                                )
-                                days
+                        Html.div []
+                            [ Html.p [] [ Html.text "5月" ]
+                            , Html.table [] <|
+                                List.map
+                                    (\dl ->
+                                        Html.tr [] <|
+                                            List.map
+                                                (\ds ->
+                                                    Html.td [ Html.Events.onClick <| msger "dmy" ]
+                                                        [ Html.text ds ]
+                                                )
+                                                dl
+                                    )
+                                    days
+                            ]
                 in
                     Expect.equal (view msger may) html
         ]

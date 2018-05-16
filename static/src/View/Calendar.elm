@@ -8,6 +8,51 @@ import List
 import Debug
 
 
+monthToNum : Date.Month -> Int
+monthToNum m =
+    case m of
+        Date.Jan ->
+            1
+
+        Date.Feb ->
+            2
+
+        Date.Mar ->
+            3
+
+        Date.Apr ->
+            4
+
+        Date.May ->
+            5
+
+        Date.Jun ->
+            6
+
+        Date.Jul ->
+            7
+
+        Date.Aug ->
+            8
+
+        Date.Sep ->
+            9
+
+        Date.Oct ->
+            10
+
+        Date.Nov ->
+            11
+
+        Date.Dec ->
+            12
+
+
+monthToString : Date.Month -> String
+monthToString m =
+    monthToNum m |> toString |> flip (++) "月"
+
+
 isLeapYear : Int -> Bool
 isLeapYear y =
     if y % 400 == 0 then
@@ -161,12 +206,15 @@ view msger currentDay =
                 Nothing ->
                     msger Nothing |> Html.Events.onClick
     in
-        Html.table [] <|
-            List.map
-                (\ds ->
-                    Html.tr [] <|
-                        List.map
-                            (\d -> Html.td [ event d ] [ Html.text (shower d) ])
-                            ds
-                )
-                dayList
+        Html.div []
+            [ Html.p [] [ Html.text <| monthToString <| Date.month firstDay ]
+            , Html.table [] <|
+                List.map
+                    (\ds ->
+                        Html.tr [] <|
+                            List.map
+                                (\d -> Html.td [ event d ] [ Html.text (shower d) ])
+                                ds
+                    )
+                    dayList
+            ]
