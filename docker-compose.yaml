@@ -13,5 +13,15 @@ services:
       - ./server:/var/www/html
     ports:
       - "9000:9000"
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=scheduler
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=changeme
   db:
     image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_DB=scheduler
