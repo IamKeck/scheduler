@@ -6,3 +6,7 @@ RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60e
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
+
+# install PDO-Pgsql driver
+RUN apk --no-cache add postgresql-dev
+RUN docker-php-ext-install pdo pdo_pgsql
