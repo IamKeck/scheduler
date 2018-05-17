@@ -67,10 +67,14 @@ view : Model -> Html Msg
 view m =
     div []
         [ m.currentMonth |> Maybe.map (View.Calendar.view dateClicked) |> Maybe.withDefault (text "")
-        , p [] [ text "イベント名" ]
-        , input [ onInput InputEvent ] []
-        , p [] [ text "メモ" ]
-        , input [ onInput InputMemo ] []
-        , p [] [ text "候補日時" ]
-        , textarea [ onInput InputDates, value m.dates ] []
+        , m.msg |> Maybe.map (\msg -> p [] [ text msg ]) |> Maybe.withDefault (text "")
+        , div []
+            [ p [] [ text "イベント名" ]
+            , input [ onInput InputEvent ] []
+            , p [] [ text "メモ" ]
+            , input [ onInput InputMemo ] []
+            , p [] [ text "候補日時" ]
+            , textarea [ onInput InputDates, value m.dates ] []
+            ]
+        , button [ onClick Submit ] [ text "登録" ]
         ]
