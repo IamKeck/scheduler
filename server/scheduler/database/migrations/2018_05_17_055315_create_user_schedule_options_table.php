@@ -15,6 +15,10 @@ class CreateUserScheduleOptionsTable extends Migration
     {
         Schema::create('user_schedule_options', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer("schedule_options_id")->unsigned();
+            $table->foreign("schedule_options_id")->references("id")
+                ->on("schedule_options");
+            $table->string("name");
             $table->timestamps();
         });
     }

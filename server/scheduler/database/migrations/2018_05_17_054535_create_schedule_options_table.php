@@ -15,6 +15,9 @@ class CreateScheduleOptionsTable extends Migration
     {
         Schema::create('schedule_options', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer("schedules_id")->unsigned();
+            $table->foreign("schedules_id")->references("id")->on("schedules");
+            $table->dateTime("initial_time");
             $table->timestamps();
         });
     }
