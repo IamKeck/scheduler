@@ -8,6 +8,10 @@ services:
     ports:
       - "18080:80"
   php:
-    image: php:fpm-alpine
+    build: ./server
+    volumes:
+      - ./server:/var/www/html
+    ports:
+      - "9000:9000"
   db:
     image: postgres:alpine
