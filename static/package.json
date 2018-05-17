@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "elm-test"
+    "test": "elm-test",
+    "build": "cd src && npx elm-make Main.elm --yes --output ../main.js",
+    "watch": "watch 'npm run build' ./src -p=/elm-stuff/"
   },
   "author": "",
   "license": "ISC",
