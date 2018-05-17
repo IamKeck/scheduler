@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./static:/usr/share/nginx/html
+    ports:
+      - "18080:80"
+  php:
+    image: php:fpm-alpine
+  db:
+    image: postgres:alpine
