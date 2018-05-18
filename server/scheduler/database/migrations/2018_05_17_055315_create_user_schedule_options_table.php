@@ -19,6 +19,7 @@ class CreateUserScheduleOptionsTable extends Migration
             $table->foreign("schedule_options_id")->references("id")
                 ->on("schedule_options");
             $table->string("name");
+            $table->integer("attendance");
             $table->timestamps();
         });
     }
