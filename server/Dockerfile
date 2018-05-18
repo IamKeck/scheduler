@@ -13,3 +13,8 @@ RUN docker-php-ext-install pdo pdo_pgsql
 
 # install Postgres client
 RUN apk --no-cache add postgresql-client
+
+RUN mkdir /var/www/html/scheduler
+
+WORKDIR "/var/www/html/scheduler"
+CMD ./start.sh
