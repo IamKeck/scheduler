@@ -9,4 +9,5 @@ done
 
 >&2 echo "Postgres is up - executing command"
 php artisan migrate
+php artisan db:seed
 exec php-fpm
