@@ -20,6 +20,9 @@ services:
       - DB_DATABASE=scheduler
       - DB_USERNAME=postgres
       - DB_PASSWORD=changeme
+    depends_on:
+      - nginx
+      - db
   db:
     image: postgres:alpine
     environment:
